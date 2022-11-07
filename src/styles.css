@@ -1,0 +1,8 @@
+body{
+    font-family: "JetBrains Mono",monospace;
+}
+
+.pokemon-time{
+    top: -25%;
+    margin-right: -10px;
+}
