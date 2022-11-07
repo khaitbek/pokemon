@@ -4,6 +4,7 @@ const pokemonTemplate = document.querySelector("[data-pokemon]").content
 const pokeFragment = new DocumentFragment()
 const pokemonForm = document.querySelector("#pokemonForm")
 const pokemonInput = pokemonForm.querySelector("#pokemonSearch")
+const pokemonSort = pokemonForm.querySelector("#pokemonSort")
 const categorySelect = document.querySelector("#pokemonSelect")
 
 // functions
@@ -48,11 +49,27 @@ function renderCategories(categories,categoryList){
     categoryList.append(categoryFragment)
 }
 
+function sortPokemons(pokemons,type){
+    if(type === "a-z") return pokemons.sort((a,b) => {
+        return a.name > b.name
+    })
+    if(type === "z-a") return pokemons.sort((a,b) => {
+        return a.name < b.name
+    })
+    if(type === "shortest-tallest")return pokemons.sort((a,b) => {
+        return a.height - b.height
+    })
+    if(type === "tallest-shortest")return pokemons.sort((a,b) => {
+        return b.height - a.height
+    })
+}
+
 function filterPokemons(searchString,category){
     const filteredPokemons = pokemons.filter(pokemon => {
         return pokemon.name.match(new RegExp(searchString,"gi")) && (category === "all" || pokemon.weaknesses.includes(category))
     })
-    renderPokemons(filteredPokemons,pokemonList)
+    const sortedPokemons = sortPokemons(filteredPokemons,pokemonSort.value)
+    renderPokemons(sortedPokemons,pokemonList)
 }
 
 const updateInputText = debounce(text => {
