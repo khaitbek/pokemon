@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- script -->
-    <!-- <script src="./script/pokemons.min.js" defer></script>
-    <script src="./script/app.min.js" defer></script> -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="./script/pokemons.min.js" defer></script>
     <script src="./src/app.js" defer></script>
     
@@ -20,6 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- aos css -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body class="bg-primary bg-opacity-50">
@@ -59,7 +60,7 @@
     
     <!-- template -->
     <template data-pokemon>
-        <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3">
+        <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3" data-aos="fade-up" data-aos-duration="2000">
             <div class="card">
                 <div class="card-header position-relative">
                     <h3 class="fw-light text-center" id="pokemonName">Pokemon Name</h3>
@@ -78,6 +79,10 @@
             </div>
         </div>
     </template>
+
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
